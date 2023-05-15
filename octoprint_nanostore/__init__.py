@@ -51,6 +51,9 @@ class NanostorePlugin(octoprint.plugin.SettingsPlugin,
             gcode = payload['gcode']
             gcode_location = payload['gcode_location']
 
+            if not filename.startswith('nanostore_'):
+                return
+
             self._logger.info("Hello SlicingStarted | " + filename)
 
             payload = {'filename': filename, 'gcode': gcode, 'gcode_location': gcode_location}
@@ -61,25 +64,62 @@ class NanostorePlugin(octoprint.plugin.SettingsPlugin,
             filename = payload['stl']
             gcode = payload['gcode']
             gcode_location = payload['gcode_location']
+
+            if not filename.startswith('nanostore_'):
+                return
+            
             self._logger.info("Hello SlicingDone | " + filename)
 
             payload = {'filename': filename, 'gcode': gcode, 'gcode_location': gcode_location}
             url = BACKEND_URL + '/slice-event/sliceOK'
             r = requests.post(url, json = payload)
 
+        if event == 'PrintStarted':
+            filename = payload['name']
+
+            if not filename.startswith('nanostore_'):
+                return
+            
+            self._logger.info("Nanostore PrintStarted | " + filename)
+            payload = {'filename': filename}
+            url = BACKEND_URL + '/print-event/printStart'
+            r = requests.post(url, data=payload)
+
+        if event == 'PrintDone':
+            filename = payload['name']
+
+            if not filename.startswith('nanostore_'):
+                return
+            
+            self._logger.info("Nanostore PrintDone | " + filename)
+            payload = {'filename': filename}
+            url = BACKEND_URL + '/print-event/printOK'
+            r = requests.post(url, data=payload)
+
+        if event == 'PrintFailed':
+            filename = payload['name']
+
+            if not filename.startswith('nanostore_'):
+                return
+            
+            self._logger.info("Nanostore PrintFailed | " + filename)
+            payload = {'filename': filename}
+            url = BACKEND_URL + '/print-event/printKO'
+            r = requests.post(url, data=payload)
+
+
         if event == 'MetadataAnalysisFinished':
             filename = payload['name']
             result = payload['result']
-            self._logger.info("Hello MetadataAnalysisFinished | " + filename)
+
+            if not filename.startswith('nanostore_'):
+                return
+            
+            self._logger.info("Nanostore MetadataAnalysisFinished | " + filename)
             
             payload = {'filename': filename, 'result': result}
             url = BACKEND_URL + '/slice-event/metadata-done'
             r = requests.post(url, data=payload)
-
-        if event == 'UserLoggedIn':
-            self._logger.info("Hello UserLoggedIn | ")
-            
-            self._logger.info("Hello World | ".join(output_parts).format(payload=payload))
 
     def get_update_information(self):
         # Define the configuration for your plugin to use with the Software Update
