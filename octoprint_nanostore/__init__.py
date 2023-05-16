@@ -13,7 +13,7 @@ import octoprint.plugin
 import requests
 
 ##  https://8a15-79-155-18-236.ngrok-free.app
-BACKEND_URL = 'https://646aa6a89e93.ngrok.app'
+BACKEND_URL = 'https://nano-backend.eu.ngrok.io'
 
 class NanostorePlugin(octoprint.plugin.SettingsPlugin,
     octoprint.plugin.AssetPlugin,
