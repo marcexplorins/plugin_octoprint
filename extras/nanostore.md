@@ -11,9 +11,9 @@ license: AGPLv3
 # TODO
 date: today's date in format YYYY-MM-DD, e.g. 2015-04-21
 
-homepage: https://github.com/you/OctoPrint-Nanostore
-source: https://github.com/you/OctoPrint-Nanostore
-archive: https://github.com/you/OctoPrint-Nanostore/archive/master.zip
+homepage: https://github.com/marcexplorins/plugin_octoprint
+source: https://github.com/marcexplorins/plugin_octoprint
+archive: https://github.com/marcexplorins/plugin_octoprint/archive/master.zip
 
 # TODO
 # Set this to true if your plugin uses the dependency_links setup parameter to include
