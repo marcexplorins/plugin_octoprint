@@ -13,7 +13,7 @@ import octoprint.plugin
 import requests
 
 ##  https://8a15-79-155-18-236.ngrok-free.app
-BACKEND_URL = 'https://6zjub3d524.execute-api.eu-west-1.amazonaws.com/dev'
+BACKEND_URL = 'https://oejnh81rzi.execute-api.eu-west-1.amazonaws.com/dev'
 
 class NanostorePlugin(octoprint.plugin.SettingsPlugin,
     octoprint.plugin.AssetPlugin,
