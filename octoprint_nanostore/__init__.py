@@ -12,8 +12,8 @@ from __future__ import absolute_import
 import octoprint.plugin
 import requests
 
-##  https://8a15-79-155-18-236.ngrok-free.app
-BACKEND_URL = 'https://oejnh81rzi.execute-api.eu-west-1.amazonaws.com/dev'
+BACKEND_URL = 'https://nano-backend.eu.ngrok.io'
+## BACKEND_URL = 'https://oejnh81rzi.execute-api.eu-west-1.amazonaws.com/dev'
 
 class NanostorePlugin(octoprint.plugin.SettingsPlugin,
     octoprint.plugin.AssetPlugin,
